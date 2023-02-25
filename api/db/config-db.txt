@@ -1,0 +1,14 @@
+use admin
+db.createUser({ user: "admin", pwd: "gutent@g!", roles: [{ role: "userAdminAnyDatabase", db: "admin" }] })
+use recipes
+db.createUser({ user: "dbUser", pwd: "W!llK0mmen!", roles: [{ role: "dbOwner", db: "recipes" }] })
+
+db.createCollection("recipes", { autoIndexId : true })
+
+use recipesTEST
+db.createUser({ user: "dbTESTUser", pwd: "W!llK0mmen!", roles: [{ role: "dbOwner", db: "recipesTEST" }] })
+
+db.createCollection("recipes", { autoIndexId : true })
+
+
+exit
