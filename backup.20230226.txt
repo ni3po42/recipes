@@ -1,14 +1,4 @@
-import { connect, recipeCollection } from './api/db/index.mjs';
-
-const r = await connect();
-
-const db = r.db();
-
-const receipes = db.collection(recipeCollection);
-//const d = new Date('12/2/2022');
-//const result = await receipes.updateMany( { name: { '$eq': 'cream cheese chicken sandwiches' }}, { $set : { 'attrs.isSlowCook': true }});
-
-const result = await receipes.insertMany([
+[
 {"name":"cuban-style black beans and rice","book":"BHG Slow Cooker","page":286,"ingredients":[{"itemName":"dry black beans","size":1.5,"unit":"cup","note":null},{"itemName":"chicken broth","size":4,"unit":"cup","note":null},{"itemName":"onion","size":1,"unit":"ct","note":null},{"itemName":"bay leaf","size":2,"unit":"ct","note":null},{"itemName":"jalapeno","size":1,"unit":"ct","note":null},{"itemName":"garlic clove","size":4,"unit":"ct","note":null},{"itemName":"cumin","size":2,"unit":"tsp","note":null},{"itemName":"lime peel","size":2,"unit":"tsp","note":"sub with lemon peel"},{"itemName":"salt","size":0.75,"unit":"tsp","note":null},{"itemName":"pepper","size":0.25,"unit":"tsp","note":null},{"itemName":"white long grain rice","size":3,"unit":"cup","note":null}],"note":null,"lastMade":"2023-02-05T06:00:00.000Z","attrs":{"isSlowCook":true}},
 {"name":"spicy citrus chicken","book":"BHG Slow Cooker","page":236,"ingredients":[],"note":"Dry and flavorless","lastMade":"2022-06-11T05:00:00.000Z","attrs":{"bad":true}},
 {"name":"sloppy joes","book":"BHG Slow Cooker","page":185,"ingredients":[{"itemName":"ground beef","size":2.5,"unit":"lb","note":null},{"itemName":"onion","size":1,"unit":"ct","note":"medium, chopped"},{"itemName":"garlic clove","size":3,"unit":"ct","note":"minced"},{"itemName":"ketchup","size":1.25,"unit":"cup","note":null},{"itemName":"green sweet pepper","size":1,"unit":"ct","note":"medium, chopped"},{"itemName":"celery","size":2,"unit":"ct","note":"chopped"},{"itemName":"water","size":0.33,"unit":"cup","note":null},{"itemName":"brown sugar","size":3,"unit":"tbsp","note":null},{"itemName":"mustard","size":3,"unit":"tbsp","note":null},{"itemName":"vinegar","size":3,"unit":"tbsp","note":null},{"itemName":"worcestershire sauce","size":3,"unit":"tbsp","note":null},{"itemName":"chili powder","size":1,"unit":"tbsp","note":null},{"itemName":"hamburger buns","size":8,"unit":"ct","note":null}],"note":null,"lastMade":"2023-02-12T06:00:00.000Z","attrs":{"isSlowCook":true}},
@@ -69,10 +59,4 @@ const result = await receipes.insertMany([
 {"name":"three cheese calzones","book":"Blue Apron","page":0,"ingredients":[{"itemName":"pizza dough","size":2,"unit":"lb","note":null},{"itemName":"ricotta cheese","size":2,"unit":"cup","note":null},{"itemName":"crushed tomatoes","size":2,"unit":"ct","note":"15 oz can"},{"itemName":"kale","size":1,"unit":"ct","note":null},{"itemName":"garlic","size":4,"unit":"ct","note":null},{"itemName":"parmesan cheese","size":0.5,"unit":"cup","note":"grated"},{"itemName":"italian seasoning","size":2,"unit":"tbsp","note":null},{"itemName":"raisins","size":3,"unit":"tbsp","note":null},{"itemName":"mozzarella cheese","size":8,"unit":"oz","note":null}],"note":"already doubled","lastMade":"2023-01-27T06:00:00.000Z","attrs":{}},
 {"name":"foot feta-ish burger / never been feta","book":"Bobs Burgers","page":"82","ingredients":[{"itemName":"feta cheese","size":4,"unit":"oz","note":null},{"itemName":"ground beef","size":1,"unit":"lb","note":null},{"itemName":"yellow mustard","size":0.5,"unit":"cup","note":null},{"itemName":"mayonnaise","size":0.25,"unit":"cup","note":null},{"itemName":"ciabatta rolls","size":4,"unit":"ct","note":null},{"itemName":"Arugula","size":1,"unit":"ct","note":null},{"itemName":"Sriracha","size":1,"unit":"ct","note":"optional"}],"note":null,"lastMade":"2023-02-15T06:00:00.000Z","attrs":{}},
 {"name":"skillet lasagna","book":"BHG Slow Cooker","page":"370","ingredients":[{"itemName":"ground turkey sausage","size":8,"unit":"oz","note":null},{"itemName":"onion","size":0.5,"unit":"cup","note":"chopped"},{"itemName":"spaghetti sauce","size":2,"unit":"cup","note":null},{"itemName":"water","size":1,"unit":"cup","note":null},{"itemName":"zucchini","size":1,"unit":"ct","note":null},{"itemName":"egg noodles","size":2,"unit":"cup","note":null},{"itemName":"ricotta cheese","size":2,"unit":"tbsp","note":null},{"itemName":"parmesan","size":2,"unit":"tbsp","note":null},{"itemName":"parsley","size":1,"unit":"tbsp","note":null},{"itemName":"mozzarella","size":0.5,"unit":"cup","note":null}],"note":null,"lastMade":"2023-02-26T06:00:00.000Z","attrs":{}},
-].map(x=>{
-    return {...x, lastMade: new Date(x.lastMade), page: +x.page}
-}));
-
-console.log(result);
-
-r.close();
+]

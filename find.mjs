@@ -1,7 +1,7 @@
 import { connect, recipeCollection } from './api/db/index.mjs';
 
 import process from 'process';
-import readline from 'readline/promises';
+import * as readline from 'readline/promises';
 
 const rl = readline.createInterface({
     input: process.stdin,
