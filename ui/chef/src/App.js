@@ -1,25 +1,22 @@
-import React, {useState, useEffect} from 'react';
-import './App.css';
 
-import Recipes from './features/recipes/Recipes.js';
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./Layout";
+import Home from "./pages/Home";
+import Prep from './pages/Prep';
 
 function App() {
 
-  const [recipes, setRecipes] = useState([]);
-
-  useEffect(()=>{
-
-    fetch('/api/recipes')
-      .then(res => res.json())
-      .then(data => setRecipes(data));  
-    
-  });
-
   return (
-    <main>
-      <Recipes recipes={recipes}></Recipes>
-    </main>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="prep" element={<Prep />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
-
+ // <Route path="*" element={<NoPage />} />
 export default App;

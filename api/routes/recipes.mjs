@@ -47,6 +47,32 @@ async function getQuery(reqQuery) {
 
 
 router
+    .get('/:id', async (req, res) => {
+        const { id } = req.params;
+        console.log(id);
+        const _id = MongoId(id);
+
+        (await collection(recipeCollection))
+            .findOne({ _id })
+            .then(result => {
+                res.status(200).send(result);
+            })
+})
+
+    .patch('/:id', async (req, res) => {
+        
+        const theId = MongoId(req.params.id);
+    
+        const { _id, ...value} = req.body;
+        
+        (await collection(recipeCollection))
+            .replaceOne({ _id : theId }, value)
+            .then(result => {
+                res.status(201).send('inserted');
+            });
+
+    })
+
     .get('/', async (req, res) => {
 
         const query = await getQuery(req.query).catch(e => {

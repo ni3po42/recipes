@@ -3,14 +3,26 @@ import express from 'express';
 import { recipesRoute } from './routes/recipes.mjs';
 import { serverErrorHandler } from './middleware/error.mjs'
 
-const app = express();
+import { exec } from 'node:child_process';
 
-const port = 8080;
+exec('sudo systemctl start mongod', (error)=> {
+    if (error) {
+        console.log(error);
+    }
+    else {
 
-app.use(express.json());
-app.use('/api/recipes', recipesRoute, serverErrorHandler);
-
-
-app.listen(port, ()=>{
-    console.log('chef api start');
+        const app = express();
+        
+        const port = 8080;
+        
+        app.use(express.json());
+        app.use('/api/recipes', recipesRoute, serverErrorHandler);
+        
+        app.listen(port, ()=>{
+            console.log('chef api start');
+        });
+        
+    }
 });
+
+
